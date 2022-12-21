@@ -20,47 +20,52 @@ let transMoney = 120;
 let transMoney_m = 150;
 
 if (transMoney > transMoney_m) {
-    alert(`Сумма денег, которую дает мама на проезд не может быть меньше суммы проезда`);
-    breakpoints
-}
-
-for (let i = 0; i < array.length; i++) {
+    alert('Сумма денег, которую дает мама на проезд не может быть меньше суммы проезда');
+    
+} else {
+    for (let i = 0; i < array.length; i++) {
     let typeOfWeek = array[i];
 
     for (let j = 0; j < typeOfWeek.length; j++) {
         weekNumber = weekNumber + 1;
         console.log(`Неделя номер ${weekNumber}`);
         let week = typeOfWeek[j]
-        // console.log(week);
 
         for (let k = 0; k < week.length; k++) {
             dayNumber = dayNumber + 1;
             console.log(`День номер ${dayNumber}`);
             let sumLesson = week[k];
             console.log(sumLesson);
+            if (moneybox >= consolePrise) {
+                break
+            }
             if ((sumLesson > 0) && (sumLesson <= 3)) {
+                
                 console.log(`Денюжку откладываем, ибо пар в день: ${sumLesson}`);
 
-                moneybox = moneybox + mealMoney + (transMoney_m - transMoney)
+                moneybox = moneybox + mealMoney + transMoney;
 
                 console.log(`Отложили: ${mealMoney} руб., в копилке: ${moneybox} руб.`);
 
             } else if (sumLesson > 3) {
+               
                 console.log(`Денюжку НЕ откладываем, ибо пар в день: ${sumLesson}`);
-                
-                moneybox = moneybox + (transMoney_m - transMoney)
+
+                moneybox = moneybox + transMoney;
 
             } else {
+                
                 console.log(`Денюжку НЕ откладываем, ибо пар в день: ${sumLesson}`);
             }
             
-            if(moneybox >= consolePrise) {
-                alert(`Ура! Скопили!!! На ${dayNumber} сумму ${moneybox}`);
-                breakpoints
-            }
-        }
+            if (moneybox >= consolePrise) {
+                
+                alert(`Ура! Скопили!!! На ${dayNumber} день, сумму ${moneybox}`);
+           }
+        }  
     }
 }
 if ((moneybox < consolePrise) && (moneybox != consolePrise)) {
-    alert(`Не накопил(( но сумма составила ${moneybox} руб.`)
+    alert(`На приставку накопить не удалось, но за всё время накоплено ${moneybox} руб`)
+}
 }
